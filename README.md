@@ -31,6 +31,9 @@ Get → Lookup from map + move to front
 Evict → Remove least recently used (tail of list)  
 TTL → Expire entries based on time  
 
+### Architecture
+<img width="561" height="721" alt="Part_1_Foundation" src="https://github.com/user-attachments/assets/94c720b2-7751-4087-88e5-dfc15ee0550a" />
+
 ---
 
 ##  Project Structure
