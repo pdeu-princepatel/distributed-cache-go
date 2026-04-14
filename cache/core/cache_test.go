@@ -3,6 +3,7 @@ package cache
 // code to run testing
 // cd core
 // go test -bench .
+// go test -bench . -race
 
 import (
 	"fmt"
