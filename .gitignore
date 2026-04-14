@@ -1,0 +1,7 @@
+*.exe
+*.test
+*.prof
+*.log
+==Ideas==.txt
+cache/
+cache.txt
