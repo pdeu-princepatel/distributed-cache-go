@@ -77,7 +77,7 @@ Instead of blocking on expiration:
 This improves latency under load.
 ---
 ### Flow:
-
+```txt
 Client
 ↓
 Server (main.go)
@@ -90,6 +90,7 @@ Shard (hash)
 ↓
 [ HIT ] → return
 [ MISS ] → singleflight → load → store → return
+```
 ---
 ### Architecture
 segmented cache:
