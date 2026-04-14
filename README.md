@@ -95,11 +95,12 @@ Shard (hash)
 segmented cache:
 <img width="961" height="1036" alt="part 2 segmented drawio" src="https://github.com/user-attachments/assets/801c442c-bb36-45c2-801a-ab78f0434111" />
 
-singleflight:
-<img width="1761" height="1731" alt="part 2 drawio" src="https://github.com/user-attachments/assets/df792ad9-6857-4ab1-ab89-9d13cbd94aaf" />
+Sharding & singleflight:
+<img width="1540" height="961" alt="part 2 single flight drawio" src="https://github.com/user-attachments/assets/9addf9ca-eae0-4d2a-a950-fd6b9046bff5" />
 
 complete:
-<img width="1540" height="961" alt="part 2 single flight drawio" src="https://github.com/user-attachments/assets/9addf9ca-eae0-4d2a-a950-fd6b9046bff5" />
+<img width="1761" height="1731" alt="part 2 drawio" src="https://github.com/user-attachments/assets/df792ad9-6857-4ab1-ab89-9d13cbd94aaf" />
+
 
 ---
 
