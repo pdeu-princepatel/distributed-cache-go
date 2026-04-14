@@ -43,7 +43,7 @@ Flow:
 key → hash → shard → local cache
 
 This reduces lock contention under high concurrency.
-
+---
 2. Segmented LRU (Hot / Warm)
 
 Traditional LRU struggles with burst traffic.
@@ -54,7 +54,7 @@ This design introduces:
 - Hot segment → frequently accessed entries
 
 This prevents temporary spikes from polluting the cache.
-
+---
 3. Singleflight (Duplicate Request Protection)
 
 When multiple requests hit the same missing key:
@@ -66,7 +66,7 @@ With singleflight:
 100 requests → 1 DB call
 
 This prevents cache stampede.
-
+---
 4. Soft TTL + Async Refresh
 
 Instead of blocking on expiration:
@@ -106,7 +106,7 @@ complete:
 ---
 
 ## Project Structure
-
+```txt
 updatedcache/
 ├── cmd/
 │ └── server/
@@ -121,7 +121,7 @@ updatedcache/
 │ ├── ttl.go // Expiration handling
 │ ├── metrics.go // Cache metrics (hit/miss/evictions)
 │ ├── cache_benchmark_test.go // Performance benchmarks
-
+```
 ---
 
 ## Running the Project
@@ -254,7 +254,7 @@ BenchmarkParallelGet-16          8506263               119.1 ns/op
 PASS
 ok      cache/core      6.568s
 ```
-
+---
 ### After (v2.0 — Sharded + Segmented + Singleflight)
 
 - Lock striping via sharding
@@ -269,51 +269,38 @@ BenchmarkStampede-16             7181374               180.7 ns/op
 PASS
 ok      cache/internals/cache   15.822s
 ```
-
+---
 ### Analysis
 
 🟢 Read Performance
-
 - v1.0 Get: ~51.8 ns/op (single-thread optimized)
 - v2.0 CacheRead: ~241 ns/op
-
 👉 Slight increase due to:
-
 - shard selection (hashing)
 - additional coordination logic
-
 ✔️ Tradeoff is expected and acceptable
 
 🟢 Parallel Performance (Key Improvement)
-
 - v1.0 ParallelGet: 119.1 ns/op
 - v2.0 ParallelCache: 165.4 ns/op
-
 👉 Despite slightly higher latency per operation:
-
 ✔️ Better scalability under contention
 ✔️ Lock contention significantly reduced due to sharding
 
 🔴 Cache Miss Cost
 CacheMiss: ~1.6 ms/op
-
 👉 This includes:
-
 - loader execution
 - synchronization (singleflight)
 - cache population
-
 ✔️ Expensive but controlled (expected behavior)
 
 🚀 Stampede Protection (Major Win)
 BenchmarkStampede: 180.7 ns/op
-
 👉 Demonstrates:
-
 - Multiple concurrent requests handled efficiently
 - Only one actual load occurs
-
-## ✔️ Prevents system overload under hot-key scenarios
+✔️ Prevents system overload under hot-key scenarios
 
 ## Key Improvements
 
