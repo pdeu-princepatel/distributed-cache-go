@@ -1,5 +1,6 @@
 # current updates 
-C:\Users\Prince Patel\Desktop\Projects\Distributed cache\updatedcache\docs\image.png
+Architecture
+
 # Previously
 # Distributed Cache in Go — Part 2 (High Concurrency & Performance)
 
