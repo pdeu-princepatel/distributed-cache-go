@@ -178,7 +178,7 @@ func (sc *ShardedCache) getShard(key string) *SegmentedCache {
 func (sc *ShardedCache) GetWithLoad(
 	ctx context.Context,
 	key string,
-	loader LoaderFunc,
+	loader func(context.Context, string) (interface{}, error),
 ) (interface{}, error) {
 
 	// Select shard based on key hash
@@ -192,7 +192,7 @@ func (sc *ShardedCache) GetWithLoad(
 func (c *SegmentedCache) GetWithLoad(
 	ctx context.Context,
 	key string,
-	loader LoaderFunc,
+	loader func(context.Context, string) (interface{}, error),
 ) (interface{}, error) {
 
 	// ---------- FAST PATH ----------

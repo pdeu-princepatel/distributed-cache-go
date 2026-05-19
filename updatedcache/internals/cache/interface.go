@@ -7,7 +7,7 @@ import "context"
 type Cacher interface {
 
 	// Fetch value from cache or load using loader
-	GetWithLoad(ctx context.Context, key string, loader LoaderFunc) (interface{}, error)
+	GetWithLoad(ctx context.Context, key string, loader func(context.Context, string) (interface{}, error)) (interface{}, error)
 	Delete(key string)
 	// Return cache statistics
 	Stats() Metrics

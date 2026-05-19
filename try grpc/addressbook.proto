@@ -1,0 +1,30 @@
+syntax = "proto3";
+package tutorial;
+
+import "google/protobuf/timestamp.proto";
+
+// This tells the compiler to put the Go code inside the tutorialpb folder
+option go_package = "github.com/protocolbuffers/protobuf/examples/go/tutorialpb";
+message Person {
+    string name = 1;
+    int32 id =2;
+    string email= 3;
+    message PhoneNumber {
+        string number = 1;
+        PhoneType type =2;
+    }
+    repeated PhoneNumber phones = 4;
+    
+    google.protobuf.Timestamp last_updated = 5;
+}
+
+enum PhoneType{
+    PHONE_TYPR_UNSPECIFIED = 0;
+    PHONE_TYPE_MOBLIE = 1;
+    PHONE_TYPE_HOME = 2;
+    PHONE_TYPE_WORK =3;
+}
+
+message AddressBook{
+    repeated Person people = 1;
+}

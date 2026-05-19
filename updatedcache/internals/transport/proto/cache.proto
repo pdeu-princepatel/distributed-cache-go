@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package proto;
+
+// IMPORTANT:
+// Must match your Go module path
+option go_package = "cache/internals/transport/proto";
+
+// =========================
+// CACHE SERVICE
+// =========================
+
+service CacheService {
+
+  // Remote GET
+  rpc Get(GetRequest) returns (GetResponse);
+
+  // Remote SET
+  rpc Set(SetRequest) returns (SetResponse);
+
+  // Remote DELETE
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+// =========================  
+// GET
+// =========================
+
+message GetRequest {
+  string key = 1;
+}
+
+message GetResponse {
+  bytes value = 1;
+  bool found = 2;
+}
+
+// =========================
+// SET
+// =========================
+
+message SetRequest {
+  string key = 1;
+  bytes value = 2;
+}
+
+message SetResponse {
+  bool success = 1;
+}
+message DeleteRequest {
+  string key = 1;
+}
+
+message DeleteResponse {
+  bool success = 1;
+}
