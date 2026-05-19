@@ -1,6 +1,9 @@
 # current updates 
 Architecture
 
+<img width="6364" height="6448" alt="image" src="https://github.com/user-attachments/assets/bbf4e18c-b338-4194-a3a4-82ac5400bdea" />
+
+---
 # Previously
 # Distributed Cache in Go — Part 2 (High Concurrency & Performance)
 
@@ -96,6 +99,15 @@ Shard (hash)
 [ MISS ] → singleflight → load → store → return
 
 ### Architecture
+segmented cache:
+<img width="961" height="1036" alt="part 2 segmented drawio" src="https://github.com/user-attachments/assets/801c442c-bb36-45c2-801a-ab78f0434111" />
+
+Sharding & singleflight:
+<img width="1540" height="961" alt="part 2 single flight drawio" src="https://github.com/user-attachments/assets/9addf9ca-eae0-4d2a-a950-fd6b9046bff5" />
+
+complete:
+<img width="1761" height="1731" alt="part 2 drawio" src="https://github.com/user-attachments/assets/df792ad9-6857-4ab1-ab89-9d13cbd94aaf" />
+
 
 ---
 
